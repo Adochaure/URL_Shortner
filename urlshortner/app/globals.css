@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap');
+@import "tailwindcss";
+body{
+  background:
+        radial-gradient(
+            circle at 50% 88%,
+            #f45718 0%,
+            #ff6f1c 20%,
+            #ff8d2c 35%,
+            #ffb347 52%,
+            rgba(255,214,120,.55) 65%,
+            rgba(255,255,255,0) 82%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(255,196,90,.7) 0%,
+            rgba(255,196,90,0) 65%
+        ),
+        #efefef;
+overflow: hidden;
+       
+}
+
+
+
+
+.doto-id{
+  font-family: "Doto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  font-variation-settings:
+    "ROND" 100;
+}
+.btn-border-draw {
+        background: white;
+        color: #6200ea;
+        border: 1px solid #ddd;
+        box-shadow: inset 0 0 0 0 #6200ea;
+        transition: ease-out 0.3s;
+    }
+    .btn-border-draw:hover {
+        box-shadow: inset 200px 0 0 0 #6200ea;
+        color: white;
+        border-color: #6200ea;
+    }
+

@@ -42,7 +42,7 @@ export default function Home() {
       setSelectedUrl(created);
       setOriginalUrl("");
       setExpiresIn("1d");
-      setMessage("URL created successfully.");
+      setMessage(view === "qr" ? "QR code ready." : "URL created successfully.");
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Something went wrong");
     } finally {

@@ -31,15 +31,6 @@ async function CreateURL(req, res) {
     }
 }
 
-async function GetURLs(req, res) {
-    try {
-        const urls = await URLModel.find().sort({ createdAt: -1 });
-        return res.status(200).json({ data: urls });
-    } catch (err) {
-        return res.status(500).json({ message: err.message });
-    }
-}
-
 async function DeleteURL(req, res) {
     try {
         const { id } = req.params;
@@ -77,7 +68,6 @@ async function RedirectURL(req, res) {
 
 module.exports = {
     CreateURL,
-    GetURLs,
     DeleteURL,
     RedirectURL,
 };

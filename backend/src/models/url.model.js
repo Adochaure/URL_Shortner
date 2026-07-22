@@ -23,6 +23,8 @@ const urlSchema = new mongoose.Schema({
   }
 )
 
+urlSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
+
 const URLModel = mongoose.model("URL",urlSchema);
 
 

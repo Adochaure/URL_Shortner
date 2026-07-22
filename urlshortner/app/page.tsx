@@ -15,10 +15,7 @@ export default function Home() {
   const [selectedUrl, setSelectedUrl] = useState<UrlRecord | null>(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const apiBase = useMemo(
-    () => process.env.NEXT_PUBLIC_SHORT_URL_BASE ?? "http://localhost:3000/api/URL",
-    []
-  );
+  const publicBase = useMemo(() => process.env.NEXT_PUBLIC_SHORT_URL_BASE?.replace(/\/api\/URL\/?$/, "") ?? "", []);
 
   async function handleCreate() {
     if (!originalUrl.trim()) {
@@ -40,7 +37,7 @@ export default function Home() {
         expiresAt.toISOString()
       );
       const created = response.data;
-      const nextShortUrl = `${apiBase}/${created.shortCode}`;
+      const nextShortUrl = `${publicBase}/${created.shortCode}`;
       setShortUrl(nextShortUrl);
       setSelectedUrl(created);
       setOriginalUrl("");
@@ -92,11 +89,11 @@ export default function Home() {
 
   useEffect(() => {
     if (selectedUrl) {
-      setShortUrl(`${apiBase}/${selectedUrl.shortCode}`);
+      setShortUrl(`${publicBase}/${selectedUrl.shortCode}`);
     }
-  }, [selectedUrl, apiBase]);
+  }, [selectedUrl, publicBase]);
 
-  const displayUrl = selectedUrl ? `${apiBase}/${selectedUrl.shortCode}` : shortUrl;
+  const displayUrl = selectedUrl ? `${publicBase}/${selectedUrl.shortCode}` : shortUrl;
 
   return (
     <div className="relative doto-id flex min-h-screen flex-col items-center justify-center border border-white border-dashed px-3 py-4 font-sans bg-transparent sm:px-4 sm:py-6">
